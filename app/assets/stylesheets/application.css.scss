@@ -1,0 +1,91 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+// .navbar {
+//   background-color: #424242;
+// }
+
+
+// .navbar-brand {
+//   // letter-spacing: 2px;
+//    //text-indent: 15px;
+//   // font-size: 165%;
+//   // padding-bottom: 40px;
+//   // background-color: #424242;
+//   // I couldn't figure out how to change font color within this style sheet. Changed in html instead.
+// }
+
+
+body {
+  padding-top: 65px;
+}
+
+
+// .jumbotron {
+//   // margin-top: 20px;
+//   // padding-top: 4px;
+//   // padding-left: 20px !important;
+//   // padding-bottom: 20px;
+//   // border: 1px;
+//   // border-color: black;
+//   // border-style:solid;
+//   // border-radius: 0 !important;
+//   //font-size: 155%;
+// }
+
+
+// p.jumbotronsubtitle
+// {
+//   font-size: 155%;
+// }
+
+//Again, couldn't figure out how to change font color within this style sheet. Changed in html instead.
+
+//
+// .panel-default > .panel-heading {
+//   // background-color: #A9D0F5;
+//   // padding-bottom: 8px;
+//   // border: 1px;
+//   // border-color: black;
+//   // border-style: solid;
+// }
+//
+//
+// .panel-title{
+//   // font-family: "Comic Sans MS", cursive, sans-serif;
+//   // font-size: 175%;
+//   // font-weight: bold;
+// }
+// //Again, couldn't figure out how to change font color within this style sheet. Changed in html instead.
+//
+//
+//
+// .panel-body
+// {
+//   // border: 1px;
+//   // border-color: black;
+//   // border-style:solid;
+// }
+//
+// p.panels {
+//   // font-family: "Comic Sans MS", cursive, sans-serif;
+//   // font-size: 175%;
+// }
+
+// p.quoters {
+//   font-weight: bold;
+//   font-size: 175%;
+// }
+//
+// p.quoters {
+//   font-style: text-muted;
+// }
+
+
+
+.img-footer
+{
+  max-height: 30px;
+  max-width: 30px;
+}

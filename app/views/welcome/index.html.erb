@@ -1,0 +1,101 @@
+<html>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>gCamp</h1>
+    <p>Your life, organized.</p>
+    <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+  </div>
+</div>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <p class="lead">
+        <img src="https://farm6.staticflickr.com/5349/8969237967_c5960fc544_b.jpg" class="img-responsive" alt="Responsive image">
+      </p>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Tasks</div>
+        <div class="panel-body">
+        Grouped by projects and lists, just the way you like 'em
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-md-4">
+      <p class="lead">
+        <img src="https://farm9.staticflickr.com/8538/8864977481_713b7cbda5_b.jpg" class="img-responsive" alt="Responsive image">
+      </p>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Permissions</div>
+        <div class="panel-body">
+          <ul>
+            <li>Upload</li>
+            <li>Comment</li>
+            <li>Revise</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Note that in previous assignment, this panel's body text read "Fine-grained permissions".-->
+
+
+
+      <div class="col-md-4">
+        <p class="lead">
+          <img src="https://farm9.staticflickr.com/8482/8203794182_8004f8f636_b.jpg" class="img-responsive" alt="Responsive image">
+        </p>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Comments</div>
+            <div class="panel-body">
+              <ul><li>Comment on tasks and documents</li>
+                <li>Get email notifications</li></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+       <!-- /container -->
+
+
+      <!-- used "line-height" style here to eliminate half-line of extra spacing in list.
+      Not sure yet how better to do this.-->
+
+      <!-- Although note that apparently the panel-body class did this automatically.-->
+
+
+
+      <!-- <p>&ldquo;gCamp has changed my life!  It&#39;s the best tool I&#39;ve ever used.&rdquo;</p>
+      <p class="text-muted"><em>&mdash; Cayla Hayes</em></p>
+      <p>&ldquo;Before gCamp I was a disorderly slob.  Now I&#39;m more organized than I&#39;ve ever been&rdquo;</p>
+      <p class="text-muted"><em>&mdash; Leta Jaskolski</em></p>
+      <p>&ldquo;Don&#39;t hesitate - sign up right now! You&#39;ll never be the same.&rdquo;</p>
+      <p class="text-muted"><em>&mdash; Lavern Upton</em></p>
+ -->
+
+
+
+      <div>
+
+      <% @quotes.each do |quote, author| %>
+
+        <div>"<%= quote %>"</div>
+        <em> <p class='text-muted'> - <%= author %> </p></em>
+        <% end %>
+      </div>
+
+
+
+
+
+
+</html>
