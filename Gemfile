@@ -31,9 +31,9 @@ gem 'bootstrap-sass', '~> 3.3.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 end
