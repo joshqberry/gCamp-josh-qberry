@@ -1,21 +1,23 @@
 
-
-
   <div class="page-header">
     <h1>Frequently Asked Questions</h1>
   </div>
 
 
-  <ul><% @common_question.each do |common_question| %>
-  <li><%= link_to common_question.question, "##{common_question}" %></li>
-  <% end %>
-</ul>
+  <div class="row">
+    <div class="col-md-6">
+      <ul><% @common_questions.each do |common_question| %>
+        <li><%= link_to common_question.question, "##{common_question.slug}" %></li>
+        <% end %>
+      </ul>
 
-      <% @common_question.each do |common_question| %>
-    <a name="<%= "#{common_question.slug}" %>"> </a> <strong><%= common_question.question %></strong>
+      <% @common_questions.each do |common_question| %>
+      <a name="<%= "#{common_question.slug}" %>"> </a> <strong><%= common_question.question %></strong>
+      
 
       <p><%= common_question.answer %></p>
       <p><%= link_to "top", "#top" %></p>
-
       <% end %>
+
     </div>
+  </div>

@@ -2,10 +2,11 @@
 <html>
 <head>
   <title>GSchoolProjects</title>
-  <%= stylesheet_link_tag    'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%> <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %> <%= csrf_meta_tags %>
 </head>
 <body>
+
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -19,23 +20,27 @@
         <a class="navbar-brand" href="/">gCamp</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
+      </div>
     </div>
-    </div>
-  </div>
-</nav>
+  </nav>
+
+
 
 <div class="container">
-
-
 
 
 <%= yield %>
 
 
-<hr>
 
+
+
+
+
+<hr>
 <footer>
   <div class="row">
+
     <div class= "col-md-6">
       <a href="/about">About</a>
       |
@@ -47,35 +52,28 @@
     </div>
 
 
-  <div class="col-md-6 text-right">
-    <a href="https://www.linkedin.com">
-      <img alt="Linked in" class="img-footer" src="https://g-camp.herokuapp.com/assets/linked_in-f852478f8950eb3fca3367cb545aaa52.jpg" />
-    </a>&nbsp
-    <a href="https://github.com/">
-      <img alt="Github" class="img-footer" src="https://g-camp.herokuapp.com/assets/GitHub-de8164cc6a609537cfdab331e002ebb3.png" />
-    </a>&nbsp
-    <a href="https://twitter.com/">
-      <img alt="Twitter" class="img-footer" src="https://g-camp.herokuapp.com/assets/Twitter-0c8c529fb7181e05ab5c30416e3a70fa.png" />
-    </a>&nbsp
-    <a href="https://students.gschool.it/">
-      <img alt="Galvanize g" class="img-footer" src="https://g-camp.herokuapp.com/assets/galvanize-g-b3da24895ed7d4fd33c43d9226c16242.png" />
-    </a>
-
-</div>
+    <div class="col-md-6 text-right">
+      <a href="https://www.linkedin.com">
+        <img alt="Linked in" class="img-footer" src="https://g-camp.herokuapp.com/assets/linked_in-f852478f8950eb3fca3367cb545aaa52.jpg" />
+      </a>&nbsp
+      <a href="https://github.com/">
+        <img alt="Github" class="img-footer" src="https://g-camp.herokuapp.com/assets/GitHub-de8164cc6a609537cfdab331e002ebb3.png" />
+      </a>&nbsp
+      <a href="https://twitter.com/">
+        <img alt="Twitter" class="img-footer" src="https://g-camp.herokuapp.com/assets/Twitter-0c8c529fb7181e05ab5c30416e3a70fa.png" />
+      </a>&nbsp
+      <a href="https://students.gschool.it/">
+        <img alt="Galvanize g" class="img-footer" src="https://g-camp.herokuapp.com/assets/galvanize-g-b3da24895ed7d4fd33c43d9226c16242.png" />
+      </a>
     </div>
-  </div>
 
+  </div> <!-- closes row -->
+</footer>
 
-  </footer>
+</div> <!-- closes container -->
 
 <br>
 <br>
-
-
-
-
-
-
 
 
       <!-- Bootstrap core JavaScript
@@ -85,11 +83,6 @@
       <script src="../../dist/js/bootstrap.min.js"></script>
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-
-
-
-
 
 
 
