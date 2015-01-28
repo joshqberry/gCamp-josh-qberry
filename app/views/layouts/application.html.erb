@@ -29,6 +29,13 @@
 <div class="container">
 
 
+  <% if :flash %>
+  <div class="flash <%= "alert alert-success" %>"><%= flash[:success] %></div>
+  <% end %>
+
+  <div class="flash <%= "alert alert-success" %>"><%= notice %></div>
+
+
 <%= yield %>
 
 

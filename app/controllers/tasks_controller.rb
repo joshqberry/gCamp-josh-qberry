@@ -26,12 +26,13 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
-    # Note regarding the following code: the "do" is a RUBY block,
+
+    # Note from me JQ regarding the following code: the "do" is a RUBY block,
     # and the "|format|" could be anything. It's just a variable to use inside that block.
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @task, :flash => { :success => "Task was successfully created." } }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
