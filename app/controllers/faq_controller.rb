@@ -1,5 +1,9 @@
 class FaqController < ApplicationController
 
+# Note: The requirement was to name this controller "common_questions", but I simply could not
+# figure out how to do that without having to change other stuff. Just wanted to make a note here
+#   to avoid confusion later...
+
   def index
 
     @common_question1 = CommonQuestion.new
