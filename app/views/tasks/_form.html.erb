@@ -1,3 +1,12 @@
+
+<ol class ="breadcrumb">
+<li>
+<a href="/tasks">Tasks</a>
+</li>
+<li class="active">New Task</li>
+</ol>
+
+
 <%= form_for(@task) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
@@ -9,13 +18,21 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+
+
+  <form class="form-horizontal">
+    <div class="col-md-offset-1 col-md-4">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-offset-2">
+      <button class= "btn btn-primary"<%= f.submit %>Create Task</button>
+      <a class="btn btn-default" href="/tasks">Cancel</a>
+    </div>
+  </form>
+    <% end %>

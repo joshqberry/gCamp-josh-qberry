@@ -21,22 +21,44 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
       </div>
-    </div>
+    </div> <!-- closes container -->
   </nav>
+
+
+
+
 
 
 
 <div class="container">
 
 
-  <% if :flash %>
-  <div class="flash <%= "alert alert-success" %>"><%= flash[:success] %></div>
+  <% flash.each do |type, message| %>
+  <% if type == "notice" %>
+  <b>
+    <center>
+      <div class="alert alert-success">
+        <%= message %>
+      </div>
+    </center>
+  </b>
+  <% elsif type == "alert" %>
+  <b>
+    <center>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    </center>
+  </b>
+  <% end %>
   <% end %>
 
-  <div class="flash <%= "alert alert-success" %>"><%= notice %></div>
 
 
-<%= yield %>
+
+  <%= yield %>
+  
+
 
 
 
