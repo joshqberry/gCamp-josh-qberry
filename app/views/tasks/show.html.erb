@@ -1,3 +1,4 @@
+<h1><%= @task.description %></h1>
 
 
 
@@ -10,15 +11,15 @@
   <li>
     <a href="/tasks">Tasks</a>
   </li>
-  <li class="active"></li>
+  <li class="active"><%= @task.description %></li>
 </ol>
 
 
 
 <p>
-  <strong>Description:</strong>
-  <%= @task.description %>
+  <!-- <strong>Description:</strong> -->
 </p>
+
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

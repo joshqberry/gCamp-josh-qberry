@@ -3,6 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :description
       t.date :due_date
+      t.boolean :checkbox
       t.timestamps null: false
     end
   end
