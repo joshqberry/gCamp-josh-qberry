@@ -1,7 +1,7 @@
 class NowToFixCheckbox < ActiveRecord::Migration
   def change
 
-    add_column :tasks, :check_box, :boolean
+    add_column :tasks, :checkboxer, :boolean
 
   end
 end
