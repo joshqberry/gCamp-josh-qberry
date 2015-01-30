@@ -1,7 +1,7 @@
 class SecondTryForCheckbox < ActiveRecord::Migration
   def change
 
-    change_column :tasks, :checkbox, :boolean
+    change_column :tasks, :check_box, :boolean
 
 
   end
