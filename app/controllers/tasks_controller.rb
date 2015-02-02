@@ -44,6 +44,8 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
+
+
   def update
     respond_to do |format|
       if @task.update(task_params)
@@ -58,7 +60,6 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
-  def destroy
 
 
     def destroy
@@ -69,7 +70,8 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
-end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
