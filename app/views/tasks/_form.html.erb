@@ -19,38 +19,33 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
 
 
     <form class="form-horizontal">
-
-
-    <div class="row">
-      <div class="col-md-offset-1 col-md-1">
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-1">
         <%= f.label :description %></div>
-      <div class="col-md-1">
-        <%= f.text_field :description %></div>
-    </div>
+        <div class="col-md-4">
+        <%= f.text_field :description, :size => 50 %>
+        </div>
+      </div>
 
     <br>
+    <br>
 
-    <div class="row">
+    <div class="form-group">
       <div class="col-md-offset-1 col-md-1">
         <%= f.label :due_date %></div>
-      <div class="col-md-1">
-        <%= f.date_field :due_date %></div>
-    </div>
+        <div class="col-md-4">
+        <%= f.date_select :due_date %></div>
+      </div>
 
     <br>
 
-    <div class="row">
-      <div class="col-md-offset-2 col-md-1">
-        <%= f.submit class: "btn btn-primary" %></div>
-      <div class="col-md-1", style="padding-left: 25px">
+    <div class="form-group">
+      <div class="col-md-offset-2">
+        <%= f.submit class: "btn btn-primary" %>
         <%= link_to 'Cancel', tasks_path, class: "btn btn-default" %></div>
     </div>
 
-    <br>
-
-    <div class="row">
-      <div class="col-md-offset-2 col-md-4">
-
+    <div class="col-md-offset-2 col-md-4">
     <% if current_page?(:controller => 'tasks', :action => 'new') %>
     <%= f.check_box :cbox, :style => 'visibility: hidden' %>
     <% else %>
@@ -59,17 +54,10 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
 
     <% end %>
 
-
-
-
-
-
-
-      </div>
     </div>
 
-
-  </form>
-
+<br>
 
     <% end %>
+
+</form>

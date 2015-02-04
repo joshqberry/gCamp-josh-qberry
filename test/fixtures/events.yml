@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-02-02
+  location: MyString
+  description: MyText
+  capacity: 1
+  requires_id: false
+
+two:
+  date: 2015-02-02
+  location: MyString
+  description: MyText
+  capacity: 1
+  requires_id: false
