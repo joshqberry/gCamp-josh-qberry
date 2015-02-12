@@ -1,0 +1,46 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+
+<!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above
+the form_for notation or else your buttons won't register your actions. Huh. -->
+
+
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-1">
+        <%= f.label :name %></div>
+        <div class="col-md-5">
+        <%= f.text_field :name, :size => 50 %>
+        </div>
+      </div>
+
+    <br>
+    <br>
+
+
+    <div class="form-group">
+      <div class="col-md-offset-2">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= link_to 'Cancel', projects_path, class: "btn btn-default" %></div>
+    </div>
+
+
+
+
+
+<br>
+
+    <% end %>
+
+</form>

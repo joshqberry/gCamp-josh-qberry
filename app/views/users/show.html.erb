@@ -1,0 +1,37 @@
+<h1><%= @user.first_name %>&nbsp;<%= @user.last_name %>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-info pull-right" %></h1>
+<hr>
+
+<!-- <p id="notice"><%= notice %></p> -->
+
+
+
+
+<!-- <ol class ="breadcrumb">
+  <li>
+    <a href="/users">Users</a>
+  </li>
+  <li class="active"><%= @user.first_name %>&nbsp;<%= @user.last_name %></li>
+</ol> -->
+
+<dl class="dl-horizontal">
+<dt><b>First name</b></dt>
+<dd><%= @user.first_name %></dd>
+<br>
+<dt><b>Last name</b></dt>
+<dd><%= @user.last_name %></dd>
+<br>
+  <dt><b>Email</b></dt>
+  <dd>  <%= mail_to(@user.email) %></dd>
+
+
+</dl>
+
+
+<p>
+  <!-- <strong>Description:</strong> -->
+</p>
+
+<!--
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %> -->
