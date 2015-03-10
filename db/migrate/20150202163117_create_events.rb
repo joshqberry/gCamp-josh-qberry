@@ -1,3 +1,5 @@
+# This migration was created in error, and the once-existing table in the database has been deleted.
+
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
