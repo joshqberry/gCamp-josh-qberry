@@ -1,15 +1,13 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<% if @project.errors.any? %>
+  <% @form_errors = @project.errors.count %>
+  <% @the_thing_with_errors = "project" %>
+  <% @full_message_errors = @project.errors.full_messages %>
+<%= render '/shared/errors' %>
+<% end %>
 
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-    <% end %>
+
+<%= form_for(@project) do |f| %>
+
 
 
 <!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above
@@ -34,10 +32,6 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
         <%= f.submit class: "btn btn-primary" %>
         <%= link_to 'Cancel', projects_path, class: "btn btn-default" %></div>
     </div>
-
-
-
-
 
 <br>
 

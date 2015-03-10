@@ -1,17 +1,13 @@
+<% if @task.errors.any? %>
+  <% @form_errors = @task.errors.count %>
+  <% @the_thing_with_errors = "task" %>
+  <% @full_message_errors = @task.errors.full_messages %>
+<%= render '/shared/errors' %>
+<% end %>
 
 
 <%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-    <% end %>
 
 
 <!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above

@@ -1,6 +1,7 @@
 <h1><%= @project.name %>
 <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info pull-right" %>
-<%= link_to 'Destroy', edit_project_path(@project), class: "btn btn-danger pull-right" %>
+<%= link_to 'Destroy', project_path(@project), class: "btn btn-danger pull-right",
+method: :delete, data: { confirm: 'Are you sure?' } %>
 </h1>
 <hr>
 
