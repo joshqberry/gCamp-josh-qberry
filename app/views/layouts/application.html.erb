@@ -20,7 +20,16 @@
         <a class="navbar-brand" href="/">gCamp</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-      </div>
+        <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+            <li class="nameofloggedinuser"><%= "#{current_user.full_name}" %></li>
+              <li><%= link_to "Sign Out", logout_path %></li>
+            <% else %>
+              <li><%= link_to "Sign In", login_path %></li>
+              <li><%= link_to "Sign Up", signup_path %></li>
+            <% end %>
+          </ul>
+      </div> <!-- closes navbar-collapse -->
     </div> <!-- closes container -->
   </nav>
 
@@ -76,8 +85,6 @@
       <a href="/terms">Terms</a>
       |
       <a href="/faq">FAQ</a>
-      |
-      <a href="/tasks">Tasks</a>
       |
       <a href="/users">Users</a>
       |

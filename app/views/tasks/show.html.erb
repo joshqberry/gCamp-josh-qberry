@@ -5,14 +5,20 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 
-
-
 <ol class ="breadcrumb">
   <li>
-    <a href="/tasks">Tasks</a>
+    <%= link_to "Projects", projects_path %>
+  </li>
+  <li>
+  <%= link_to @project.name, project_path(@project) %>
+  </li>
+  <li>
+  <%= link_to "Tasks", project_tasks_path(@project) %>
   </li>
   <li class="active"><%= @task.description %></li>
 </ol>
+
+
 
 
 
@@ -21,5 +27,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
+<%= link_to 'Back', project_path(@project) %>

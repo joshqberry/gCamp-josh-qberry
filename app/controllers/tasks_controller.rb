@@ -1,45 +1,43 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks.all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @project = Project.find(params[:project_id])
   end
 
   # GET /tasks/new
   def new
     @task = Task.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /tasks/1/edit
   def edit
+    @project = Project.find(params[:project_id])
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new(task_params)
+    if @task.save
+    flash[:success] = "Task was successfully added to project."
+    redirect_to @project
+  else
+    render :new
+  end
 
-
-    # Note from me JQ regarding the following code: the "do" is a RUBY block,
-    # and the "|format|" could be anything. It's just a variable to use inside that block.
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: "Task was successfully created."}
-        # format.html { redirect_to @task, :flash => { :success => "Task was successfully created." } }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /tasks/1
@@ -47,29 +45,27 @@ class TasksController < ApplicationController
 
 
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
+    @project = Project.find(params[:id])
+      if @project.tasks.update_attributes(task_params)
+        flash[:success] = "You have successfully updated task details."
+        redirect_to project_path(@project)
       else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        flash[:danger] = "Course details were not updated."
+      render 'courses/edit'
       end
     end
-  end
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
 
 
     def destroy
-      @task = Task.find(params[:id])
+      @project = Project.find(params[:id])
       @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to @project, notice: 'You have successfully deleted a task from this project.'
+
     end
-  end
+
 
 
 
@@ -81,6 +77,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :due_date, :cbox)
+      params.require(:task).permit(:description, :due_date, :cbox, :project_id)
     end
+
 end

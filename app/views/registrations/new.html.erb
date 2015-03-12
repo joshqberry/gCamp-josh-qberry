@@ -1,0 +1,76 @@
+<h1>Sign up</h1>
+
+<hr>
+
+<% if @user.errors.any? %>
+  <% @form_errors = @user.errors.count %>
+  <% @the_thing_with_errors = "user" %>
+  <% @full_message_errors = @user.errors.full_messages %>
+<%= render '/shared/errors' %>
+<% end %>
+
+
+
+
+<%= form_for @user, url: signup_path do |f| %>
+
+<form class="form-horizontal">
+
+  <div class="form-group">
+    <div class="col-md-offset-1 col-md-1 text-nowrap">
+    <%= f.label :first_name %></div>
+    <div class="col-md-4">
+    <%= f.text_field :first_name, :size => 50 %></div>
+  </div>
+
+<br>
+<br>
+
+<div class="form-group">
+  <div class="col-md-offset-1 col-md-1 text-nowrap">
+    <%= f.label :last_name %></div>
+    <div class="col-md-4">
+    <%= f.text_field :last_name, :size => 50  %></div>
+  </div>
+
+  <br>
+
+  <div class="form-group" style="padding-top:5px">
+    <div class="col-md-offset-1 col-md-1 text-nowrap" >
+      <%= f.label :email %></div>
+      <div class="col-md-4" >
+      <%= f.email_field :email, :size => 50  %></div>
+    </div>
+
+<br>
+
+<div class="form-group" style="padding-top:5px">
+  <div class="col-md-offset-1 col-md-1 text-nowrap" >
+    <%= f.label :password %></div>
+    <div class="col-md-4" >
+    <%= f.password_field :password, :size => 50  %></div>
+  </div>
+
+<br>
+
+<div class="form-group" style="padding-top:5px">
+  <div class="col-md-offset-1 col-md-1" >
+    <%= f.label :confirm_password %></div>
+    <div class="col-md-4" >
+    <%= f.password_field :password_confirmation, :size => 50  %></div>
+  </div>
+
+<br>
+<br>
+
+<div class="form-group">
+  <div class="col-md-offset-2">
+    &nbsp;<%= f.submit class: "btn btn-primary" %>
+    &nbsp;&nbsp;<%= link_to 'Cancel', users_path, class: "btn btn-default" %></div>
+</div>
+
+<br>
+
+<% end %>
+
+</form>

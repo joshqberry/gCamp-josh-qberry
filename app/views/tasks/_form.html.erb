@@ -6,7 +6,7 @@
 <% end %>
 
 
-<%= form_for(@task) do |f| %>
+<%= form_for [@project, @task] do |f| %>
 
 
 
@@ -35,12 +35,6 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
 
     <br>
 
-    <div class="form-group">
-      <div class="col-md-offset-2">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= link_to 'Cancel', tasks_path, class: "btn btn-default" %></div>
-    </div>
-
     <div class="col-md-offset-2 col-md-4">
     <% if current_page?(:controller => 'tasks', :action => 'new') %>
     <%= f.check_box :cbox, :style => 'visibility: hidden' %>
@@ -51,6 +45,16 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
     <% end %>
 
     </div>
+
+    <br>
+    <br>
+
+    <div class="form-group">
+      <div class="col-md-offset-2">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= link_to 'Cancel', project_path(@project), class: "btn btn-default" %></div>
+    </div>
+
 
 <br>
 

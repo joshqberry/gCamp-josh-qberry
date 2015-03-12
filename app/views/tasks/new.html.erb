@@ -13,11 +13,12 @@
 
 <ol class ="breadcrumb">
   <li>
-    <a href="/tasks">Tasks</a>
+    <%= link_to "Projects", projects_path %>
+  </li>
+  <li>
+  <%= link_to @project.name, project_path(@project) %>
   </li>
   <li class="active">New Task</li>
 </ol>
 
 <%= render 'form' %>
-
-<!-- <%= link_to 'Back', tasks_path %> -->

@@ -1,3 +1,6 @@
+# HEY JQ, NOTE THAT THIS WILL NOT BE FUNCTIONAL WITH THE CHANGE IN HAVING TASKS BELONG TO PROJECTS.
+# JUST FYI, NOT WORRYING ABOUT IT JUST YET.
+
 require 'test_helper'
 
 class TasksControllerTest < ActionController::TestCase

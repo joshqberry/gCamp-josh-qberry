@@ -1,31 +1,19 @@
 <h1><%= @project.name %>
-<%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info pull-right" %>
 <%= link_to 'Destroy', project_path(@project), class: "btn btn-danger pull-right",
 method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info pull-right" %>
 </h1>
 <hr>
 
-<!-- <p id="notice"><%= notice %></p> -->
 
-
-
-
-<!-- <ol class ="breadcrumb">
+<ol class ="breadcrumb">
   <li>
     <a href="/projects">Projects</a>
   </li>
   <li class="active"><%= @project.name %></li>
-</ol> -->
+</ol>
+
+<b><%= link_to pluralize(@project.tasks.count, "task"), project_tasks_path(@project) %></b>
 
 
-
-
-
-
-<p>
-  <!-- <strong>Description:</strong> -->
-</p>
-
-<!--
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %> -->
+<br>
