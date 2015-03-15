@@ -19,6 +19,14 @@
 </ol>
 
 
+<dl class="dl-horizontal">
+<dt><b>Completed?</b></dt>
+<dd><%= @task.cbox %></dd>
+<br>
+<dt><b>Due date</b></dt>
+<dd><%= @task.due_date %></dd>
+
+</dl>
 
 
 
@@ -26,6 +34,7 @@
   <!-- <strong>Description:</strong> -->
 </p>
 
-
+<div class="col-sm-offset-1">
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
 <%= link_to 'Back', project_path(@project) %>
+</div>

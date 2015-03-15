@@ -10,8 +10,6 @@
 <!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above
 the form_for notation or else your buttons won't register your actions. Huh. -->
 
-    <form class="form-horizontal">
-
       <div class="form-group">
         <div class="col-md-offset-1 col-md-1 text-nowrap">
         <%= f.label :first_name %></div>
@@ -40,6 +38,25 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
 
     <br>
 
+    <div class="form-group" style="padding-top:5px">
+      <div class="col-md-offset-1 col-md-1 text-nowrap" >
+        <%= f.label :password %></div>
+        <div class="col-md-4" >
+        <%= f.password_field :password, :size => 50  %></div>
+      </div>
+
+    <br>
+
+    <div class="form-group" style="padding-top:5px">
+      <div class="col-md-offset-1 col-md-1" >
+        <%= f.label :password_confirmation, "Confirm password" %></div>
+        <div class="col-md-4" >
+        <%= f.password_field :password_confirmation, :size => 50  %></div>
+      </div>
+
+    <br>
+    <br>
+
     <div class="form-group">
       <div class="col-md-offset-2">
         &nbsp;<%= f.submit class: "btn btn-primary" %>
@@ -49,5 +66,3 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
     <br>
 
   <% end %>
-
-</form>

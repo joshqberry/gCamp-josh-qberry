@@ -9,12 +9,9 @@
 <%= render '/shared/errors' %>
 <% end %>
 
-
-
-
 <%= form_for @user, url: signup_path do |f| %>
 
-<form class="form-horizontal">
+
 
   <div class="form-group">
     <div class="col-md-offset-1 col-md-1 text-nowrap">
@@ -55,7 +52,7 @@
 
 <div class="form-group" style="padding-top:5px">
   <div class="col-md-offset-1 col-md-1" >
-    <%= f.label :confirm_password %></div>
+    <%= f.label :password_confirmation, "Confirm password" %></div>
     <div class="col-md-4" >
     <%= f.password_field :password_confirmation, :size => 50  %></div>
   </div>
@@ -65,12 +62,10 @@
 
 <div class="form-group">
   <div class="col-md-offset-2">
-    &nbsp;<%= f.submit class: "btn btn-primary" %>
+    &nbsp;<%= f.submit "Sign up", class: "btn btn-primary" %>
     &nbsp;&nbsp;<%= link_to 'Cancel', users_path, class: "btn btn-default" %></div>
 </div>
 
 <br>
 
 <% end %>
-
-</form>

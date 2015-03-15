@@ -30,7 +30,9 @@
 
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to((user.first_name), user) %>&nbsp;<%= link_to((user.last_name), user) %></td>
+        <td><%= link_to user do %>
+          <%= user.first_name %>&nbsp;<%= user.last_name %></td>
+          <% end %>
         <td><%= mail_to(user.email) %> </td>
 
 

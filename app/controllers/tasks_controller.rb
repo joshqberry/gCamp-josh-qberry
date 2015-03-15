@@ -32,8 +32,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.new(task_params)
     if @task.save
-    flash[:success] = "Task was successfully added to project."
-    redirect_to @project
+    redirect_to @project, notice: "Task was successfully added to project."
   else
     render :new
   end
@@ -45,13 +44,11 @@ class TasksController < ApplicationController
 
 
   def update
-    @project = Project.find(params[:id])
-      if @project.tasks.update_attributes(task_params)
-        flash[:success] = "You have successfully updated task details."
-        redirect_to project_path(@project)
+    @project = Project.find(params[:project_id])
+      if @task.update_attributes(task_params)
+        redirect_to project_path(@project), notice: "You have successfully updated task details."
       else
-        flash[:danger] = "Course details were not updated."
-      render 'courses/edit'
+        render :edit
       end
     end
 
@@ -60,7 +57,7 @@ class TasksController < ApplicationController
 
 
     def destroy
-      @project = Project.find(params[:id])
+      @project = Project.find(params[:project_id])
       @task.destroy
       redirect_to @project, notice: 'You have successfully deleted a task from this project.'
 

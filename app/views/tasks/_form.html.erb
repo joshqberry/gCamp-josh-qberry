@@ -14,7 +14,6 @@
 the form_for notation or else your buttons won't register your actions. Huh. -->
 
 
-    <form class="form-horizontal">
       <div class="form-group">
         <div class="col-md-offset-1 col-md-1">
         <%= f.label :description %></div>
@@ -39,8 +38,8 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
     <% if current_page?(:controller => 'tasks', :action => 'new') %>
     <%= f.check_box :cbox, :style => 'visibility: hidden' %>
     <% else %>
-    <%= f.check_box :cbox %>
-    <span> &nbsp; Task has been completed.</span>
+    <%= f.check_box :cbox, :id => 'if completed' %>
+    <span> &nbsp; <label> Task has been completed. </label></span>
 
     <% end %>
 
@@ -59,5 +58,3 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
 <br>
 
     <% end %>
-
-</form>
