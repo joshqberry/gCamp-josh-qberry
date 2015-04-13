@@ -1,0 +1,38 @@
+<%= form_for [@project, @membership], :html => {:class => 'form-inline'} do |f| %>
+
+
+      <div class="form-group">
+        <div class="col-md-offset-1 col-md-1">
+        <%= f.label :user_id %></div>
+        <div class="col-md-4">
+        <%= f.collection_select :user_id, User.all, :id, :full_name,
+        prompt: "Please select a user...", :size => 50 %></div>
+        </div>
+
+
+    <br>
+    <% f.text_field :project_id, as: :hidden %>
+    <br>
+
+    <div class="form-group">
+      <div class="col-md-offset-1 col-md-1">
+        <%= f.label :role %></div>
+        <div class="col-md-4">
+        <%= f.select :role, [['member'], ['owner']], :size => 50 %></div>
+
+      </div>
+
+    <br>
+    <br>
+
+    <div class="form-group">
+      <div class="col-md-offset-2">
+        <%= f.submit "Update member", class: "btn btn-primary" %>
+    </div>
+</div>
+
+
+
+
+
+<% end %>
