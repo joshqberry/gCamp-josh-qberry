@@ -120,7 +120,26 @@ visibility: visible;
 max-width: 300px;
 }
 
-#hooptydoo
+#buttonwithglyph:hover
 {
-    display: block !important;
+    background-color: white;
+    color: red;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#buttonwithglyph:active
+{
+    background-color: white;
+    color: black;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#buttonwithglyph:focus
+{
+    background-color: white;
+    color: black;
+    box-shadow: none;
+    -webkit-box-shadow: none;
 }

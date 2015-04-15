@@ -14,6 +14,9 @@ method: :delete, data: { confirm: 'Are you sure?' } %>
 </ol>
 
 <b><%= link_to pluralize(@project.tasks.count, "task"), project_tasks_path(@project) %></b>
+<br>
+<br>
+<b><%= link_to pluralize(@project.memberships.count, "membership"), project_memberships_path(@project) %></b>
 
-
+<br>
 <br>

@@ -7,11 +7,19 @@
     <%= link_to "Projects", projects_path %>
   </li>
   <li>
-  <%= link_to @project.name, project_path(@project) %>
+    <%= link_to @project.name, project_path(@project) %>
   </li>
-    <li class="active">Memberships</li>
+  <li class="active">
+    Memberships
+  </li>
 </ol>
 
+<% if @membership.errors.any? %>
+  <% @form_errors = @membership.errors.count %>
+  <% @the_thing_with_errors = "membership" %>
+  <% @full_message_errors = @membership.errors.full_messages %>
+<%= render '/shared/errors' %>
+<% end %>
 
 <%= form_for [@project, @membership], :html => {:class => 'well form-inline'} do |f| %>
 
@@ -20,39 +28,65 @@
 <!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above
 the form_for notation or else your buttons won't register your actions. Huh. -->
 
+  <div class="form-group">
+    <%= f.collection_select :user_id, User.all, :id, :full_name,
+    {prompt: "Please select a user..."}, {:class => 'form-control'} %>
+  </div>
 
-      <div class="form-group">
-        <div class="col-md-offset-1 col-md-1">
-        <%= f.label :user_id %></div>
-        <div class="col-md-4">
-        <%= f.collection_select :user_id, User.all, :id, :full_name,
-        prompt: "Please select a user...", :size => 50 %></div>
-        </div>
+  <% f.text_field :project_id, as: :hidden %>
 
-
-    <br>
-    <% f.text_field :project_id, as: :hidden %>
-    <br>
-
-    <div class="form-group">
-      <div class="col-md-offset-1 col-md-1">
-        <%= f.label :role %></div>
-        <div class="col-md-4">
-        <%= f.select :role, [['member'], ['owner']], :size => 50 %></div>
-
-      </div>
-
-    <br>
-    <br>
-
-    <div class="form-group">
-      <div class="col-md-offset-2">
-        <%= f.submit "Add new member", class: "btn btn-primary" %>
-
+  <div class="form-group">
+    <div class="col-md-4">
+        <%= f.select :role, [['Member'], ['Owner']], {}, {:class => 'form-control'} %>
     </div>
+  </div>
 
-</div>
+<!-- Note that you needed the empty array in the above select field due to the number of arguments
+required! (This field doesn't take a prompt.) -->
+
+  <div class="form-group">
+    <%= f.submit "Add new member", class: "btn btn-primary form-control" %>
+  </div>
+
 <% end %>
 
+<table class="table" >
+  <!-- <thead>
+    <tr>
+      <th class="col-md-2"></th>
+      <th class="col-md-1"></th>
+    </tr>
+  </thead> -->
+
+<!-- Removing table head gets rid of thicker hr above first row, but doesn't eliminate the hr's
+entirely ... But adding a style of border-top:none to the td's does. -->
+
+  <tbody >
+    <% @project.memberships.each do |membership| %>
+      <tr>
+        <td style="border-top: none; width: 130px; padding: 0px; vertical-align: middle">
+          <%= link_to membership.user.full_name, user_path(membership.user) %>
+        </td>
+        <td style="border-top: none; width: 130px">
+          <%= form_for [@project, membership], :html => {:class => 'form-inline'} do |f| %>
+            <div class="form-group" style="display:block; padding:0px">
+              <%= f.select :role, [['Member'], ['Owner']], {}, {:class => 'form-control', style: "margin-left: -4px"} %>
+            </div>
+        </td>
+        <td style="border-top: none; padding-left:0px; width: 130px">
+            <div class="form-group" style="display:block; padding-left:0px; margin-bottom:0px; width:140px">
+              <%= f.submit "Update", {class: "btn btn-primary form-control", style: "margin-left: -14px"} %>
+            </div>
+        </td>
+        <td style="border-top: none; padding:0px">
+          <%= link_to '', project_membership_path(@project, membership), class: "btn btn-default btn-lg glyphicon glyphicon-remove", id: "buttonwithglyph",
+          style: "margin-left: -5px; vertical-align: middle; border:0px; padding-top:14px", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <% end %>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+
 <br>
-<%= render 'edit_form' %>
+<br>

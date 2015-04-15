@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+
   end
 
   # GET /projects/1
@@ -13,6 +14,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @tasks = @project.tasks
+    @memberships = @project.memberships
   end
 
   # GET /projects/new

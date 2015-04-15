@@ -45,6 +45,12 @@ class TasksController < ApplicationController
 
   def update
     @project = Project.find(params[:project_id])
+
+    # Note that the defining of a project variable above is NOT required for the updating of a task;
+    # it's so that the redirect "knows" where to go.
+    # Then again, that may not be necessary at all, since the task belongs to a project anyway.
+    # Not gonna look at that now...
+
       if @task.update_attributes(task_params)
         redirect_to project_path(@project), notice: "You have successfully updated task details."
       else
