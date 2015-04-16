@@ -24,7 +24,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    if current_user.admin?
+      @user = User.new(user_admin_params)
+   else
+     @user = User.new(user_params)
+  end
 
     # Note from me JQ regarding the following code: the "do" is a RUBY block,
     # and the "|format|" could be anything. It's just a variable to use inside that block.
@@ -47,15 +51,23 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if current_user.admin?
+        if @user.update(user_admin_params)
+        redirect_to users_path, notice: 'User was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :edit
+      end
+
+     else
+
+      if @user.update(user_params)
+        redirect_to users_path, notice: 'User was successfully updated.'
+      else
+        render :edit
       end
     end
   end
+end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -81,5 +93,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
+
+    def user_admin_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
+      :admin)
     end
 end

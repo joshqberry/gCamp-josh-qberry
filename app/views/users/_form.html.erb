@@ -56,6 +56,15 @@ the form_for notation or else your buttons won't register your actions. Huh. -->
 
     <br>
     <br>
+    <% if current_user.admin? %>
+    <div class="col-md-offset-2 col-md-4">
+    <%= f.check_box :admin %>
+    <span> &nbsp; <label> Admin </label></span>
+    </div>
+    <br>
+    <br>
+    <% end %>
+
 
     <div class="form-group">
       <div class="col-md-offset-2">
