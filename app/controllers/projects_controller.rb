@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project.users.exists?(id: current_user.id)
     else
-      redirect_to projects_path, notice: "You do not have access to that project."
+      redirect_to projects_path, alert: "You do not have access to that project."
     end
   end
 

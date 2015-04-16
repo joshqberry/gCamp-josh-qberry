@@ -14,8 +14,10 @@
   </li>
 </ol>
 
+<% if logged_in? %>
 <% if @project.memberships.exists?(user_id: current_user.id, role: "Owner") %>
 <%= render 'new_form'  %>
+<% end %>
 <% end %>
 
 <table class="table" >
