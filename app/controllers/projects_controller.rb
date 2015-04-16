@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
 
         @project.memberships.create(role: "Owner", user_id: current_user.id)
 
-        format.html { redirect_to @project, notice: "Project was successfully created."}
+        format.html { redirect_to project_tasks_path(@project), notice: "Project was successfully created."}
         # format.html { redirect_to @project, :flash => { :success => "Project was successfully created." } }
         format.json { render :show, status: :created, location: @project }
       else
