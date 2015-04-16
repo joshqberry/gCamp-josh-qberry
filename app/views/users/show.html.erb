@@ -1,5 +1,11 @@
-<h1><%= @user.first_name %>&nbsp;<%= @user.last_name %>
-<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-info pull-right" %></h1>
+
+<% if (@user == current_user) || (current_user.admin?) %>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-info pull-right" %>
+<% end %>
+
+<h1><%= @user.first_name %>&nbsp;<%= @user.last_name %></h1>
+
+
 <hr>
 
 <!-- <p id="notice"><%= notice %></p> -->

@@ -21,8 +21,10 @@ def current_user
   def log_out
       session.delete(:user_id)
       @current_user = nil
-      flash[:success] = "Logged out!"
-      redirect_to login_path
+      redirect_to login_path, notice: "You have deleted your record." 
   end
 
+  def not_admin?
+    !current_user.admin?
+  end
 end

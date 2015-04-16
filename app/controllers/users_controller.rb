@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @user = current_user
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -19,6 +20,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if (current_user != @user) && (not_admin?)
+    render :file => "#{Rails.root}/public/404.html",  :status => 404, :layout => false
+
+end
   end
 
   # POST /users
@@ -74,13 +79,17 @@ class UsersController < ApplicationController
 
     def destroy
       @user = User.find(params[:id])
+      if current_user.admin?
       @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+    else
+      @user.destroy
+      log_out
+    end
   end
-
 
 
   private
@@ -98,4 +107,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
       :admin)
     end
+
+
+
 end

@@ -30,7 +30,7 @@
 
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user do %>
+        <td> <%= link_to user do  %>
           <%= user.first_name %>&nbsp;<%= user.last_name %></td>
           <% end %>
         <td><%= mail_to(user.email) %> </td>
@@ -38,9 +38,11 @@
 
         <!-- <td><%= link_to 'Show', user %></td> -->
         <td><div class="text-right">
+          <% if (user.full_name == current_user.full_name) || (current_user.admin?) %>
           <%= link_to 'Edit', edit_user_path(user), class: "btn btn-info" %>
         <%= link_to 'Destroy', user, class: "btn btn-danger", method: :delete, data:
         { confirm: 'Are you sure?' } %>
+        <% end %>
 
 
 
