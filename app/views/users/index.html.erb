@@ -30,10 +30,18 @@
 
     <% @users.each do |user| %>
       <tr>
-        <td> <%= link_to user do  %>
-          <%= user.first_name %>&nbsp;<%= user.last_name %></td>
-          <% end %>
-        <td><%= mail_to(user.email) %> </td>
+        <td><%= link_to user do  %>
+           <%= user.first_name %>&nbsp;<%= user.last_name %>
+        <% end %></td>
+
+
+        <td> <% if  !(@current_user_project_ids & user.memberships.pluck(:project_id)).empty? || (current_user.admin?)  %>
+                  <%= mail_to(user.email) %>
+                  <% end %>
+                </td>
+
+
+
 
 
         <!-- <td><%= link_to 'Show', user %></td> -->
@@ -49,9 +57,6 @@
         </div></td>
 
     </tr>
-
-
-
 
 
 

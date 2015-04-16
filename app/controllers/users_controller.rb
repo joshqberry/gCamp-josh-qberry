@@ -4,13 +4,14 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @user = current_user
+    @current_user_project_ids = current_user.memberships.pluck(:project_id)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @current_user_project_ids = current_user.memberships.pluck(:project_id)
   end
 
   # GET /users/new

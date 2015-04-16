@@ -27,9 +27,10 @@
 <dt><b>Last name</b></dt>
 <dd><%= @user.last_name %></dd>
 <br>
+ <% if  !(@current_user_project_ids & @user.memberships.pluck(:project_id)).empty? || (current_user.admin?)  %>
   <dt><b>Email</b></dt>
   <dd>  <%= mail_to(@user.email) %></dd>
-
+<% end %>
 
 </dl>
 
