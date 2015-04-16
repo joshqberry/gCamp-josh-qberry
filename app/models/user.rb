@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :projects, through: :memberships
 end
