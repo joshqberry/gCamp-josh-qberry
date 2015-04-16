@@ -1,0 +1,35 @@
+<% if @membership.errors.any? %>
+  <% @form_errors = @membership.errors.count %>
+  <% @the_thing_with_errors = "membership" %>
+  <% @full_message_errors = @membership.errors.full_messages %>
+<%= render '/shared/errors' %>
+<% end %>
+
+<%= form_for [@project, @membership], :html => {:class => 'well form-inline'} do |f| %>
+
+
+
+<!-- Note to me JQ: for some reason yet unknown to me, you can't put the following form class above
+the form_for notation or else your buttons won't register your actions. Huh. -->
+
+  <div class="form-group">
+    <%= f.collection_select :user_id, User.all, :id, :full_name,
+    {prompt: "Please select a user..."}, {:class => 'form-control'} %>
+  </div>
+
+  <% f.text_field :project_id, as: :hidden %>
+
+  <div class="form-group">
+    <div class="col-md-4">
+        <%= f.select :role, [['Member'], ['Owner']], {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+<!-- Note that you needed the empty array in the above select field due to the number of arguments
+required! (This field doesn't take a prompt.) -->
+
+  <div class="form-group">
+    <%= f.submit "Add new member", class: "btn btn-primary form-control" %>
+  </div>
+
+<% end %>

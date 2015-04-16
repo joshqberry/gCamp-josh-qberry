@@ -1,4 +1,7 @@
 class MembershipsController < ApplicationController
+  before_action :block_nonmember
+  before_action :block_nonowner, only: [:create, :update, :destroy]
+
 
   def index
     @project = Project.find(params[:project_id])
@@ -50,6 +53,22 @@ class MembershipsController < ApplicationController
 
     def membership_params
       params.require(:membership).permit(:user_id, :project_id, :role)
+    end
+
+    def block_nonmember
+      @project = Project.find(params[:project_id])
+        if @project.memberships.exists?(:user_id => current_user.id)
+        else
+        redirect_to projects_path, notice: "You do not have access to that project."
+      end
+    end
+
+    def block_nonowner
+      @project = Project.find(params[:project_id])
+      if @project.memberships.exists?(user_id: current_user.id, role: "Owner")
+      else
+        redirect_to project_path(@project), notice: "You do not have access."
+      end
     end
 
 end
