@@ -50,7 +50,6 @@ class UsersController < ApplicationController
 
 
   def update
-    respond_to do |format|
       if current_user.admin?
         if @user.update(user_admin_params)
         redirect_to users_path, notice: 'User was successfully updated.'
