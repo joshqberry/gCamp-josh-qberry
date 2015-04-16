@@ -8,37 +8,36 @@
 
 <%= form_for(:session, url: login_path) do |f| %>
 
-<!-- Note that this form does not use "form-control" while my sign-up page does... this is on purpose so
-I can examine the differences beteween them... -->
-
   <div class="form-group">
-    <div class="col-md-1 text-nowrap" style="float:none">
-    <%= f.label :email %></div>
-    <div class="col-md-4">
-    <%= f.email_field :email, :size => 45 %></div>
+    <div class = "row">
+    <div class="col-md-1 text-nowrap" >
+    <%= f.label :email %></div></div>
+    <div class = "row">
+    <div class="col-md-12" style="padding-top:5px">
+    <%= f.email_field :email, class: 'form-control', :size => 30 %></div></div>
   </div>
 
-<br>
 
-<div class="form-group" style="padding-top:5px">
-  <div class="col-md-1 text-nowrap" style="float:none" >
-    <%= f.label :password %></div>
-    <div class="col-md-4" >
-    <%= f.password_field :password, :size => 45  %></div>
+  <div class="form-group" style="padding-top:5px">
+      <div class = "row">
+      <div class="col-md-1 text-nowrap" style="float:none" >
+      <%= f.label :password %></div></div>
+      <div class = "row">
+      <div class="col-md-12" >
+      <%= f.password_field :password, class: 'form-control', :size => 30 %></div></div>
   </div>
 
-<br>
-<br>
 
 <div class="form-group">
-  <div class="col-md-offset-4 col-md-1" style="float:none" >
-    <%= f.submit "Log in", class: "btn btn-primary" %></div>
-  </div>
-
+    <div class="col-md-offset-4 col-md-1" style="float:none">
+    &nbsp;<%= f.submit "Log in", class: "btn btn-primary" %></div>
 </div>
+
 <% end %>
+</div>  <!-- closes well  -->
 
 
+<br>
 <br>
 <br>
 <br>
