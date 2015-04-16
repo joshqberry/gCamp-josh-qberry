@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :block_nonmembers, only: [:show, :edit, :update, :destroy]
+
   before_action :authenticate
 
   # GET /projects
   # GET /projects.json
   def index
     @projects = Project.all
-
   end
 
   # GET /projects/1
@@ -82,6 +83,15 @@ class ProjectsController < ApplicationController
 
 
   private
+
+  def block_nonmembers
+    @project = Project.find(params[:id])
+    if @project.users.exists?(id: current_user.id)
+    else
+      redirect_to projects_path, notice: "You do not have access to that project."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
