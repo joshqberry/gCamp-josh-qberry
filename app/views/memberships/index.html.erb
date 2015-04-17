@@ -43,15 +43,19 @@ entirely ... But adding a style of border-top:none to the td's does. -->
               <%= f.select :role, [['Member'], ['Owner']], {}, {:class => 'form-control', style: "margin-left: -4px"} %>
             </div>
         </td>
+        <% if current_user.admin? %>
         <td style="border-top: none; padding-left:0px; width: 130px">
             <div class="form-group" style="display:block; padding-left:0px; margin-bottom:0px; width:140px">
               <%= f.submit "Update", {class: "btn btn-primary form-control", style: "margin-left: -14px"} %>
             </div>
         </td>
+        <% end %>
+        <% if (membership.user.full_name == current_user.full_name) || (current_user.admin?) %>
         <td style="border-top: none; padding:0px">
           <%= link_to '', project_membership_path(@project, membership), class: "btn btn-default btn-lg glyphicon glyphicon-remove", id: "buttonwithglyph",
           style: "margin-left: -5px; vertical-align: middle; border:0px; padding-top:14px", method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
+        <% end %>
         <% end %>
         <% end %>
       </tr>

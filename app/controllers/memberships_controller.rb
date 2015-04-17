@@ -1,12 +1,13 @@
 class MembershipsController < ApplicationController
   before_action :block_nonmember
-  before_action :block_nonowner, only: [:create, :update, :destroy]
+  before_action :block_nonowner, only: [:create, :update]
 
   before_action :authenticate
 
   def index
     @project = Project.find(params[:project_id])
     @membership = Membership.new
+
   end
 
   def create
@@ -45,10 +46,15 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
     @membership = Membership.find(params[:id])
     @user = @membership.user
+    if  @project.memberships.exists?(user_id: current_user.id, role: "Member") || (current_user.admin?)
     @membership.destroy
-    redirect_to project_memberships_path(@project), notice: "#{@user.full_name} was successfully removed."
+    redirect_to projects_path, notice: "#{@user.full_name} was successfully removed."
   end
+end
 
+# So I suppose with the code above, I'm not strictly blocking a member who is logged in
+# from deleting other members (even though they can't see any link to access that
+# action). Anyway, not worrying about it for now.
 
   private
 
