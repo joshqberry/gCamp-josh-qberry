@@ -59,7 +59,7 @@ class MembershipsController < ApplicationController
     def block_nonmember
       if logged_in?
       @project = Project.find(params[:project_id])
-        if @project.memberships.exists?(:user_id => current_user.id)
+        if @project.memberships.exists?(:user_id => current_user.id) || (current_user.admin?)
         else
         redirect_to projects_path, alert: "You do not have access to that project."
       end
@@ -68,7 +68,7 @@ class MembershipsController < ApplicationController
 
     def block_nonowner
       @project = Project.find(params[:project_id])
-      if @project.memberships.exists?(user_id: current_user.id, role: "Owner")
+      if @project.memberships.exists?(user_id: current_user.id, role: "Owner") || (current_user.admin?)
       else
         redirect_to project_path(@project), alert: "You do not have access."
       end

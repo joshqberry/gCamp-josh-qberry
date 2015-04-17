@@ -15,7 +15,7 @@
 </ol>
 
 <% if logged_in? %>
-<% if @project.memberships.exists?(user_id: current_user.id, role: "Owner") %>
+<% if @project.memberships.exists?(user_id: current_user.id, role: "Owner") || (current_user.admin?) %>
 <%= render 'new_form'  %>
 <% end %>
 <% end %>

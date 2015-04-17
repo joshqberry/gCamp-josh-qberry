@@ -18,39 +18,3 @@ rails s
 
 
 [![Build Status](https://travis-ci.org/joshqberry/gCamp-josh-qberry.svg)](https://travis-ci.org/joshqberry/gCamp-josh-qberry)
-
-
-From the registrations view:
-
-<% if !logged_in? %>
-If you've already registered, <%= link_to "click here", login_path %> to log in.
-<% end %>
-
-<h1>Please register! </h1>
-
-
-From sessions new view
-
-<br>
-<% if !logged_in? %>
-This page is for registered users to log in. To register, <%= link_to "click here.", signup_path %>
-<% end %>
-
-
-TO FIX CHECKBOX
-
-<div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-</div>
-
-
-:html => {:class => "glyphicon glyphicon-remove"}
-
-
-<div class="form-group">
-  <div class="col-md-offset-2">
-    <%= link_to "Delete", project_membership_path(@project,
-    @membership), method: :delete, data:
-    { confirm: 'Are you sure?'} %>
-</div>
-</div>
