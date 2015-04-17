@@ -17,7 +17,7 @@ class MembershipsController < ApplicationController
     @user = @membership.user
     redirect_to project_memberships_path(@project), notice: "#{@user.full_name} was successfully added."
   else
-    @project = Project.find(1)
+    @project = Project.find(params[:project_id])
 
     # So the line above is there to prevent the memberships index page from not rendering (apparently,
     # currently, when you save an invalid record, that record persists for a second. Because it does,
