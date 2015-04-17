@@ -86,11 +86,13 @@ class ProjectsController < ApplicationController
 
   def block_nonmembers
     @project = Project.find(params[:id])
+    if logged_in?
     if @project.users.exists?(id: current_user.id) || (current_user.admin?)
     else
       redirect_to projects_path, alert: "You do not have access to that project."
     end
   end
+end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_project

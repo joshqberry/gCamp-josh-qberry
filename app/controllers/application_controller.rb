@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate
   unless current_user
+    store_location
     flash[:alert] = 'Please sign in for access.'
     redirect_to '/login'
   end
