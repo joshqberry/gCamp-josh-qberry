@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
   before_action :block_nonmember
   before_action :block_nonowner, only: [:create, :update]
+  before_action :protect_last_owner, only: [:update]
 
   before_action :authenticate
 
@@ -46,14 +47,15 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
     @membership = Membership.find(params[:id])
     @user = @membership.user
-    if  @project.memberships.exists?(user_id: current_user.id, role: "Member") || (current_user.admin?)
+    if  @project.memberships.exists?(user_id: current_user.id) || (current_user.admin?)
     @membership.destroy
     redirect_to projects_path, notice: "#{@user.full_name} was successfully removed."
   end
 end
 
-# So I suppose with the code above, I'm not strictly blocking a member who is logged in
-# from deleting other members (even though they can't see any link to access that
+# The code above was originally @project.memberships.exists?(user_id: current_user.id, role: "Member"),
+# but I suppose that wasn't strictly blocking a member who is logged in from deleting
+# other members (even though a user who is not an owner can't see any link to access that
 # action). Anyway, not worrying about it for now.
 
   private
@@ -79,5 +81,16 @@ end
         redirect_to project_path(@project), alert: "You do not have access."
       end
     end
+
+  def protect_last_owner
+    @membership = Membership.find(params[:id])
+    if (@project.memberships.where(role: "Owner").count == 1) && (@membership.user_id == current_user.id)
+      redirect_to project_memberships_path(@project), alert: "Projects must have at least one owner."
+    elsif (current_user.admin?) && (@project.memberships.where(role: "Owner").count == 1) && (@membership.role == "Owner")
+      redirect_to project_memberships_path(@project), alert: "Projects must have at least one owner."
+
+  end
+end
+
 
 end
