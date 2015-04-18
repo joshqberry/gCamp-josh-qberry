@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
+  before_action :block_nonmember
+
 
   # GET /tasks
   # GET /tasks.json
@@ -89,5 +91,17 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:description, :due_date, :cbox, :project_id)
     end
+
+    def block_nonmember
+      if logged_in?
+        @project = Project.find(params[:project_id])
+      if @project.users.exists?(id: current_user.id) || (current_user.admin?)
+
+
+        else
+        redirect_to projects_path, alert: "You do not have access to that project."
+      end
+    end
+  end
 
 end
