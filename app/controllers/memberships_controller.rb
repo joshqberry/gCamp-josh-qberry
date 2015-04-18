@@ -25,6 +25,9 @@ class MembershipsController < ApplicationController
     # currently, when you save an invalid record, that record persists for a second. Because it does,
     # and because no project is assigned to it, the page is unable to render working links for
     # membership.user and project.memberships). I'm sure there's a better fix, but beats me.
+    # LATER: Oh, you know what, you can't render a memberships-new page since memberships are
+    # being created on their index page. That's probably the issue. Still not bothering with it
+    # right now.
 
      render :index
   end

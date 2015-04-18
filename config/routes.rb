@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
   resources :users
   resources :projects do
-    resources :tasks
-    resources :memberships
+    resources :tasks do
+      resources :comments
   end
+    resources :memberships
+end
+
+# Note to self: I'm a bit confused here as to why comments have to be nested under
+# tasks since there aren't any required comments views (comments will be solely
+# creatable and viewable on each task show page). But this doesn't seem to be
+# working any other way. So there ya go, I guess.
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

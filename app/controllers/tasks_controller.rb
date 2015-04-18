@@ -13,7 +13,13 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
+    @user = current_user
   end
+
+  # Note that you had to define @comment here since you're creating comments on this page.
 
   # GET /tasks/new
   def new
@@ -30,6 +36,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
+    @user = @project.user
     @task = @project.tasks.new(task_params)
     if @task.save
     redirect_to @project, notice: "Task was successfully added to project."
