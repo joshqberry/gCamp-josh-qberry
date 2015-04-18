@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate
+  before_action :kill_comment, only: [:destroy]
+
+
 
   # GET /users
   # GET /users.json
@@ -112,6 +115,12 @@ end
       :admin)
     end
 
-
+    def kill_comment
+          @user = User.find(params[:id])
+          Comment.where(user_id: @user.id).each do |x|
+         x.user_id = nil
+         x.save
+       end
+        end
 
 end
