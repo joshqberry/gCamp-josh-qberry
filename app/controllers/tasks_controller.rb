@@ -38,7 +38,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
-    @user = @project.user
+    @user = current_user
     @task = @project.tasks.new(task_params)
     if @task.save
     redirect_to @project, notice: "Task was successfully added to project."

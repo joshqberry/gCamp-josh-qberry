@@ -143,3 +143,44 @@ max-width: 300px;
     box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+#buttonwithglyph2:hover
+{
+    background-color: #f9f9f9;
+    color: red;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#buttonwithglyph2:active
+{
+    background-color: #f9f9f9;
+    color: black;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#buttonwithglyph2:focus
+{
+    background-color: #f9f9f9;
+    color: black;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+
+glyphy:link {
+    text-decoration: none;
+}
+
+glyphy:visited {
+    text-decoration: none;
+}
+
+glyphy:hover {
+    text-decoration: underline;
+}
+
+glyphy:active {
+    text-decoration: underline;
+}

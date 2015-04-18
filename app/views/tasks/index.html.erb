@@ -35,18 +35,19 @@
 
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.description %></td>
+        <td><%= link_to task.description, project_task_path(@project, task) %> &nbsp; <span class='badge'><%= task.comments.count %></span></td>
         <td><%= task.cbox %></td>
         <td><%= task.due_date %></td>
 
 
-        <td><div class="text-right">
-          <%= link_to 'Show', project_task_path(@project, task), class: "btn btn-success" %>
+        <td><div class="text-right" style="border-top: none; padding:0px">
+          <!-- <%= link_to 'Show', project_task_path(@project, task), class: "btn btn-success" %> -->
           <%= link_to 'Edit', edit_project_task_path(@project, task), class: "btn btn-info" %>
-        <%= link_to 'Destroy', project_task_path(@project, task), class: "btn btn-danger", method: :delete, data:
-        { confirm: 'Are you sure?' } %>
-
-
+        <!-- <%= link_to 'Destroy', project_task_path(@project, task), class: "btn btn-danger", method: :delete, data:
+        { confirm: 'Are you sure?' } %> -->
+        &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to '', project_task_path(@project, task), class: "glyphicon glyphicon-remove", id: "glyphy",
+          style: "margin-left: -5px; vertical-align: middle; border:0px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
 
         </div></td>
 
