@@ -1,7 +1,11 @@
 <h1><%= @project.name %>
-<%= link_to 'Destroy', project_path(@project), class: "btn btn-danger pull-right",
-method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <% if current_user.admin? %>
 <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info pull-right" %>
+<% elsif %>
+<% (@project.memberships.where(user_id: current_user.id)[0].role == "Owner")  %>
+<%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info pull-right" %>
+<% end %>
 </h1>
 <hr>
 
@@ -20,8 +24,17 @@ method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br>
 <br>
+<% if current_user.admin? %>
   <div class='well'>
     <h4>Delete Project?</h4>
     <p>Deleting this project will also delete <%= pluralize(@project.memberships.count, "membership") %>, <%= pluralize(@project.tasks.count, "task") %> and associated comments.</p>
-    <p style="margin-left: -8px"><%= link_to 'Delete', @project, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><p>
+    <p style="margin-left: -8px"><%= link_to 'Delete', project_path(@project), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><p>
   </div>
+  <% elsif %>
+  <% (@project.memberships.where(user_id: current_user.id)[0].role == "Owner") || (current_user.admin?) %>
+  <div class='well'>
+    <h4>Delete Project?</h4>
+    <p>Deleting this project will also delete <%= pluralize(@project.memberships.count, "membership") %>, <%= pluralize(@project.tasks.count, "task") %> and associated comments.</p>
+    <p style="margin-left: -8px"><%= link_to 'Delete', project_path(@project), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><p>
+  </div>
+  <% end %>

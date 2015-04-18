@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :block_nonmembers, only: [:show, :edit, :update, :destroy]
+  before_action :block_nonowner, only: [:edit, :update, :destroy]
 
   before_action :authenticate
 
@@ -25,6 +26,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+
   end
 
   # POST /projects
@@ -91,6 +93,14 @@ class ProjectsController < ApplicationController
     else
       redirect_to projects_path, alert: "You do not have access to that project."
     end
+  end
+end
+
+  def block_nonowner
+  @project = Project.find(params[:id])
+  if @project.memberships.exists?(user_id: current_user.id, role: "Owner") || (current_user.admin?)
+  else
+    redirect_to project_path(@project), alert: "You do not have access."
   end
 end
 
