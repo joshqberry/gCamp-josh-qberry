@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Ensures users are able to CRU users' do
 
   before :each do
-    @user = User.create(id: 1, first_name: 'Josh', last_name: 'Qberry', email: "josh@memail.com",
+    @user = User.create(id: 42, first_name: 'Josh', last_name: 'Qberry', email: "josh@memail.com",
     password: "foobar", password_confirmation: "foobar")
 
     visit '/login'

@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+andyadmin:
+  id: 1
+  first_name: Andy
+  last_name: Admin
+  email: andy@memail.com
+  admin: true
 
 two:
   first_name: MyString

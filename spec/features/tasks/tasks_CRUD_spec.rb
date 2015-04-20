@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Valid, logged-in user should be able to CRUD tasks' do
 
   before :each do
-    @user = User.create(id: 1, first_name: 'Josh', last_name: 'Qberry', email: "josh@memail.com",
+    @user = User.create(id: 42, first_name: 'Josh', last_name: 'Qberry', email: "josh@memail.com",
     password: "foobar", password_confirmation: "foobar")
 
     visit '/login'
@@ -14,15 +14,15 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
     click_button "Log in"
 
-    @project = Project.create(id: 1, name: "Big project")
+    @project = Project.create(id: 42, name: "Big project")
 
-    @membership = @project.memberships.create(user_id: 1, project_id: 1, role: "admin")
+    @membership = @project.memberships.create(user_id: 42, project_id: 42, role: "admin")
 
   end
 
       it '-- Allows valid, logged-in user to create task' do
 
-      visit '/projects/1'
+      visit '/projects/42'
 
       # Tests for link to task creation page
       click_on "task"
@@ -49,7 +49,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
       it '-- Allows valid, logged-in user to read task (see show page)' do
 
-      visit '/projects/1/tasks'
+      visit '/projects/42/tasks'
 
       click_on "New Task"
 
@@ -75,7 +75,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
       it '-- Allows valid, logged-in user to edit task' do
 
-      visit '/projects/1/tasks'
+      visit '/projects/42/tasks'
 
       click_on "New Task"
 
@@ -114,7 +114,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
       it '-- Allows valid, logged-in user to delete task' do
 
-        visit '/projects/1/tasks'
+        visit '/projects/42/tasks'
 
         click_on "New Task"
 
@@ -147,7 +147,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
       it '-- Blocks valid, logged-in user from creating task without providing task description' do
 
-      visit '/projects/1/tasks/new'
+      visit '/projects/42/tasks/new'
 
       click_on "Create"
 

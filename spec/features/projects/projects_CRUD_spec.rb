@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Valid, logged-in user should be able to CRUD projects' do
 
   before :each do
-    @user = User.create(id: 1, first_name: 'Josh', last_name: 'Qberry', email: "josh@memail.com",
+    @user = User.create(id: 42, first_name: 'Josh', last_name: 'Qberry', email: "josh@memail.com",
     password: "foobar", password_confirmation: "foobar")
 
     visit '/login'
@@ -78,7 +78,7 @@ describe 'Valid, logged-in user should be able to CRUD projects' do
 
       it '-- Allows valid, logged-in admin user to delete project' do
 
-    
+
 
       visit '/projects/new'
 

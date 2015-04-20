@@ -32,6 +32,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   # POST /tasks
