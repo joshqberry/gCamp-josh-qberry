@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Checks for successful signin functionality' do
+describe 'Checks for successful signup functionality' do
 
   it '-- Allows guest user to sign up' do
 
@@ -21,7 +21,7 @@ describe 'Checks for successful signin functionality' do
     # Tests for flash message
     expect(page).to have_content "successfully"
     # Tests for redirect
-    expect(page).to have_content "disorderly"
+    expect(page).to have_content "Projects"
   end
 
     it '-- Blocks user from signing up without providing email address' do

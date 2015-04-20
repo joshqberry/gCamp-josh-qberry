@@ -16,6 +16,8 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
     @project = Project.create(id: 1, name: "Big project")
 
+    @membership = @project.memberships.create(user_id: 1, project_id: 1, role: "admin")
+
   end
 
       it '-- Allows valid, logged-in user to create task' do
@@ -23,7 +25,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
       visit '/projects/1'
 
       # Tests for link to task creation page
-      click_on "0 tasks"
+      click_on "task"
 
       click_on "New Task"
 
@@ -42,7 +44,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
       # Tests for redirect away from Task new page
       expect(page).to have_no_content "Show"
       # Tests for redirect to Project show page
-      expect(page).to have_content "Destroy"
+      expect(page).to have_content "1 task"
   end
 
       it '-- Allows valid, logged-in user to read task (see show page)' do
@@ -63,7 +65,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
       click_on "1 task"
 
-      click_on "Show"
+      click_on "Important"
 
       # Tests that link leaves project/1/tasks
       expect(page).to have_no_content "Destroy"
@@ -102,7 +104,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
       # Tests for redirect away from Task edit page
       expect(page).to have_no_content "completed"
       # Tests for redirect to Project show page
-      expect(page).to have_content "Destroy"
+      expect(page).to have_content "1 task"
 
       click_on "1 task"
 
@@ -128,7 +130,7 @@ describe 'Valid, logged-in user should be able to CRUD tasks' do
 
         click_on "1 task"
 
-        click_on "Destroy"
+        click_on ''
 
         # Tests for flash message
         expect(page).to have_content "deleted"
